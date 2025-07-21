@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { ref } from 'vue';
 import { wchl_hackathon_backend } from 'declarations/wchl-hackathon-backend/index';
 let greeting = ref('');
@@ -25,4 +25,32 @@ async function handleSubmit(e) {
     </form>
     <section id="greeting">{{ greeting }}</section>
   </main>
+</template> -->
+
+<template>
+  <div class="flex h-screen">
+    <!-- Gunakan komponen Sidebar -->
+    <Sidebar />
+
+    <!-- Main Content -->
+    <main class="flex-1 text-white p-6 overflow-auto">
+      <RouterView/>
+    </main>
+  </div>
 </template>
+
+<script>
+import Sidebar from './components/Sidebar.vue'
+
+export default {
+  components: {
+    Sidebar
+  },
+}
+</script>
+
+<style>
+main {
+  background-color: #0F1724;
+}
+</style>
