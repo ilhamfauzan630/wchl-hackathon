@@ -6,6 +6,7 @@
   "scripts": {
     "setup": "npm i && dfx canister create wchl-hackathon-backend && dfx generate wchl-hackathon-backend && dfx deploy",
     "start": "vite --port 3000",
+    "watch": "npx @tailwindcss/cli -i ./src/index.css -o ./src/output.css --watch",
     "prebuild": "dfx generate",
     "build": "tsc && vite build",
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
