@@ -1,5 +1,9 @@
 {
   "canisters": {
+    "wchl-hackathon-backend": {
+      "type": "motoko",
+      "main": "src/wchl-hackathon-backend/src/main.mo"
+    },
     "internet_identity": {
       "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
       "frontend": {},
@@ -11,19 +15,12 @@
       "type": "custom",
       "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
     },
-    "wchl-hackathon-backend": {
-      "main": "src/wchl-hackathon-backend/main.mo",
-      "type": "motoko"
-    },
     "wchl-hackathon-frontend": {
       "dependencies": [
         "wchl-hackathon-backend"
       ],
-      "source": [
-        "src/wchl-hackathon-frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "wchl-hackathon-frontend"
+      "source": ["src/wchl-hackathon-frontend/dist"],
+      "type": "assets"
     }
   },
   "defaults": {
