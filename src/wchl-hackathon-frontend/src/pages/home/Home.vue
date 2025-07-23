@@ -40,7 +40,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(r, i) in reports" :key="i" class="border-t border-gray-700">
+            <tr v-for="(r, i) in reports" :key="i" class="border-t border-gray-700 hover:bg-gray-700">
               <td class="px-6 py-3 text-base">{{ r.wallet }}</td>
               <td class="px-6 py-3 text-base">{{ r.txCount }}</td>
               <td :class="['px-6 py-3 text-base font-semibold', riskColor(r.risk)]">
