@@ -14,5 +14,8 @@
   "type": "module",
   "workspaces": [
     "src/wchl-hackathon-frontend"
-  ]
+  ],
+  "dependencies": {
+    "chart.js": "^4.5.0"
+  }
 }

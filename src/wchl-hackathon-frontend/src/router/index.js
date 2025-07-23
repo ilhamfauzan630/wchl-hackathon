@@ -9,11 +9,11 @@ const routes = [
   { path: '/', name: 'home', component: Home },
   { path: '/wallets', name: 'wallets', component: Wallets },
   { path: '/setting', name: 'setting', component: Setting },
-  { path: '/:pathMatch(.*)*', name: 'notfound', component: NotFound }, // fallback 404
+  { path: '/:pathMatch(.*)*', name: 'notfound', component: NotFound },
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(), // pake hash (#) atau use createWebHistory()
+  history: createWebHashHistory(),
   routes,
   linkActiveClass: 'active-link',
 })
