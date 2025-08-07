@@ -1,41 +1,24 @@
-<!-- <script setup>
-import { ref } from 'vue';
-import { wchl_hackathon_backend } from 'declarations/wchl-hackathon-backend/index';
-let greeting = ref('');
-
-async function handleSubmit(e) {
-  e.preventDefault();
-  const target = e.target;
-  const name = target.querySelector('#name').value;
-  await wchl_hackathon_backend.greet(name).then((response) => {
-    greeting.value = response;
-  });
-}
-</script>
-
-<template>
-  <main>
-    <img src="/logo2.svg" alt="DFINITY logo" />
-    <br />
-    <br />
-    <form action="#" @submit="handleSubmit">
-      <label for="name">Enter your name: &nbsp;</label>
-      <input id="name" alt="Name" type="text" />
-      <button type="submit">Click Me!</button>
-    </form>
-    <section id="greeting">{{ greeting }}</section>
-  </main>
-</template> -->
-
 <template>
   <div class="flex h-screen">
-    <!-- Gunakan komponen Sidebar -->
-    <Sidebar />
+    <!-- Splash screen with transition -->
+    <transition name="fade" appear>
+      <div v-if="isLoading" class="fixed inset-0 z-50 flex items-center justify-center bg-[#0F1724]">
+        <img src="/ChainBreaker.png" alt="Loading..."/>
+      </div>
+    </transition>
 
-    <!-- Main Content -->
-    <main class="flex-1 text-white p-6 overflow-auto">
-      <RouterView/>
-    </main>
+    <!-- Main content (tetap di-render, hanya disembunyikan sementara dengan v-show) -->
+    <div v-show="!isLoading" class="flex flex-1">
+      <Sidebar />
+
+      <main class="flex-1 text-white p-6 overflow-auto">
+        <router-view v-slot="{ Component }">
+          <transition name="fade" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -46,11 +29,36 @@ export default {
   components: {
     Sidebar
   },
+  data() {
+    return {
+      isLoading: true
+    }
+  },
+  mounted() {
+    const splashAlreadyShown = localStorage.getItem('splashShown')
+
+    if (splashAlreadyShown) {
+      this.isLoading = false
+    } else {
+      this.isLoading = true
+      setTimeout(() => {
+        this.isLoading = false
+        localStorage.setItem('splashShown', 'true')
+      }, 2000)
+    }
+  }
 }
 </script>
 
 <style>
 main {
   background-color: #0F1724;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>

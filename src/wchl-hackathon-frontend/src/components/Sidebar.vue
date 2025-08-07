@@ -8,6 +8,7 @@
       <h1 class="px-2 py-1 text-base">ChainPatrol</h1>
       <router-link to="/" class="block px-2 py-1 text-base rounded"><i class="fa-solid fa-gauge" style="color: #ffffff;"></i> Dashboard</router-link>
       <router-link to="/wallets" class="block px-2 py-1 text-base rounded"><i class="fa-solid fa-wallet" style="color: #ffffff;"></i> Wallets</router-link>
+      <router-link to="/summary" class="block px-2 py-1 text-base rounded"><i class="fa-solid fa-clipboard-list" style="color: #ffffff;"></i> Summary</router-link>
       <router-link to="/setting" class="block px-2 py-1 text-base rounded"><i class="fa-solid fa-gear"></i> Settings</router-link>
     </nav>
   </aside>
